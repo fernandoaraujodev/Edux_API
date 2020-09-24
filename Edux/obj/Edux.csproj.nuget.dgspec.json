@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj": {}
+    "C:\\Users\\pc\\Desktop\\Edux_API\\Edux\\Edux.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj": {
+    "C:\\Users\\pc\\Desktop\\Edux_API\\Edux\\Edux.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\Desktop\\Edux_API\\Edux\\Edux.csproj",
         "projectName": "Edux",
-        "projectPath": "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj",
-        "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\obj\\",
+        "projectPath": "C:\\Users\\pc\\Desktop\\Edux_API\\Edux\\Edux.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pc\\Desktop\\Edux_API\\Edux\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
