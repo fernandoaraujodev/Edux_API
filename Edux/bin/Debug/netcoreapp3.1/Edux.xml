@@ -4,5 +4,43 @@
         <name>Edux</name>
     </assembly>
     <members>
+        <member name="M:Edux.Controllers.UsuarioController.GetUsuario(System.Int32)">
+            <summary>
+            filtro de usuario por id
+            </summary>
+            <param name="id">id usuario</param>
+            <returns>retorna o usuario pertencente ao id</returns>
+        </member>
+        <member name="M:Edux.Interfaces.IUsuarioRepository.Listar">
+            <summary>
+            Lista todos os usuarios na plataforma
+            </summary>
+            <returns>retorna uma lista de usuarios</returns>
+        </member>
+        <member name="M:Edux.Interfaces.IUsuarioRepository.Adicionar(Edux.Domains.Usuario)">
+            <summary>
+            Adiciona novos usuario
+            </summary>
+            <param name="usuario">Usuario</param>
+        </member>
+        <member name="M:Edux.Interfaces.IUsuarioRepository.BuscarPorNome(System.String)">
+            <summary>
+            filtro por nome
+            </summary>
+            <param name="nome"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Interfaces.IUsuarioRepository.Editar(Edux.Domains.Usuario)">
+            <summary>
+            altera o usuario existente
+            </summary>
+            <param name="usuario">Usuario</param>
+        </member>
+        <member name="M:Edux.Interfaces.IUsuarioRepository.Remover(System.Guid)">
+            <summary>
+            Deleta o usuario pelo id
+            </summary>
+            <param name="id">id do usuario</param>
+        </member>
     </members>
 </doc>
