@@ -52,6 +52,7 @@ namespace Edux.Controllers
             catch (Exception)
 
             {
+                //Retorna uma mensagem de erro, caso tenha ocorrido alguma exceção
 
                 return BadRequest(new
                 {
@@ -86,7 +87,8 @@ namespace Edux.Controllers
 
             }
             catch (Exception ex)
-            { 
+            {
+                //Retorna uma mensagem de erro, caso tenha ocorrido alguma exceção
                 return BadRequest(ex.Message);
 
             }
@@ -107,13 +109,13 @@ namespace Edux.Controllers
                 //Adiciona uma nova turma
                 _turmaRepository.Adicionar(turma);
 
-
                 //Retorna Ok caso a turma tenha sido cadastrado
                 return Ok(turma);
 
             }
             catch (Exception ex)
             {
+                //Retorna uma mensagem de erro, caso tenha ocorrido alguma exceção
                 return BadRequest(ex.Message);
             }
 
@@ -143,7 +145,7 @@ namespace Edux.Controllers
             catch (Exception ex)
 
             {
-
+                //Retorna uma mensagem de erro, caso tenha ocorrido alguma exceção
                 return BadRequest(ex.Message);
 
             }
@@ -176,6 +178,7 @@ namespace Edux.Controllers
             }
             catch (Exception ex)
             {
+                //Retorna uma mensagem de erro, caso tenha ocorrido alguma exceção
                 return BadRequest(ex.Message);
             }
         }
