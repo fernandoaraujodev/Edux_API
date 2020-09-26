@@ -4,6 +4,42 @@
         <name>Edux</name>
     </assembly>
     <members>
+        <member name="M:Edux.Controllers.TurmaController.Get">
+            <summary>
+            Método que mostra todas as turmas cadastradas 
+            </summary>
+            <returns>Lista com todos as turmas</returns>
+            GET api/Turma/5
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Get(System.Int32)">
+            <summary>
+            Mostra um único produto
+            </summary>
+            <param name="id">ID do produto</param>
+            <returns>Um produto</returns>
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Post(Edux.Domains.Turma)">
+            <summary>
+            Cadastra um novo turma
+            </summary>
+            <param name="turma">Objeto turma</param>
+            <returns>Turma cadastrado</returns>
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Put(System.Int32,Edux.Domains.Turma)">
+            <summary>
+            Método que altera determinada turma
+            </summary>
+            <param name="id">ID da Turma</param>
+            <param name="turma">Objeto Turma</param>
+            <returns>Objeto Turma com as informações alteradas</returns>
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Delete(System.Int32)">
+            <summary>
+            Método que exclui um turma
+            </summary>
+            <param name="id">Id da turma</param>
+            <returns>Id excluído</returns>
+        </member>
         <member name="M:Edux.Controllers.UsuarioController.GetUsuario(System.Int32)">
             <summary>
             filtro de usuario por id
@@ -41,6 +77,45 @@
             Deleta o usuario pelo id
             </summary>
             <param name="id">id do usuario</param>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Listar">
+            <summary>
+            Método que lista todas as turmas
+            </summary>
+            <returns>Retorna uma Lista de Turma</returns>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Método para buscar uma turma pelo seu Id
+            </summary>
+            <param name="id">Id da turma</param>
+            <returns>Lista de turma</returns>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.BuscarPorNome(System.String)">
+            <summary>
+            Método que busca turmas pela descrição
+            </summary>
+            <param name="descricao">Descrição da turma</param>
+            <returns>Retorna uma lista de turmas</returns>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Editar(Edux.Domains.Turma,System.Int32)">
+            <summary>
+            Método para editar uma turma
+            </summary>
+            <param name="turma">Objeto Turma</param>
+            <param name="id">Id da turma</param>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Adicionar(Edux.Domains.Turma)">
+            <summary>
+            Método que adiciona uma nova Turma
+            </summary>
+            <param name="turma">Objeto do tipo Turma</param>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Remover(System.Int32)">
+            <summary>
+            Método que remove uma turma
+            </summary>
+            <param name="id">Id da turma</param>
         </member>
     </members>
 </doc>
