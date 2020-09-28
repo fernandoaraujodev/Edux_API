@@ -137,9 +137,9 @@
             </summary>
             <param name="inst">Objeto do tipo instituição</param>
         </member>
-        <member name="M:Edux.Repositories.InstituicaoRepository.Editar(Edux.Domains.Instituicao)">
+        <member name="M:Edux.Repositories.InstituicaoRepository.Editar(Edux.Domains.Instituicao,System.Int32)">
             <summary>
-            Método para editar uma instituição
+            Método para editar uma instituição      
             </summary>
             <param name="inst">Objeto do tipo instituição</param>
         </member>

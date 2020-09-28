@@ -1,6 +1,7 @@
 ﻿using Edux.Contexts;
 using Edux.Domains;
 using Edux.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,10 @@ namespace Edux.Repositories
             try
             {
                 //Contexto é chamado com a instrução de encontrar na tabela Instituição com o id passado
-                return _ctx.Instituicao.Find(id);
+                return _ctx.Instituicao
+                    .Include(c => c.Curso)
+                    .FirstOrDefault(x => x.IdInstituicao == id);
+
             }
             catch (Exception ex)
             {
@@ -70,7 +74,9 @@ namespace Edux.Repositories
         {
             try
             {
-                return _ctx.Instituicao.ToList();
+                return _ctx.Instituicao
+                                .Include(i => i.Curso)
+                                .ToList();
             }
             catch (Exception ex)
             {
@@ -108,17 +114,16 @@ namespace Edux.Repositories
 
 
         /// <summary>
-        /// Método para editar uma instituição
+        /// Método para editar uma instituição      
         /// </summary>
         /// <param name="inst">Objeto do tipo instituição</param>
-        public void Editar(Instituicao inst)
+        public void Editar(Instituicao inst, int id)
         {
             try
             {
-                Instituicao instTemp = new Instituicao();
-
+               
                 //Usa o método BuscarPorId para verificar a existência da instituição informada
-                instTemp = BuscarPorId(inst.IdInstituicao);
+                Instituicao instTemp = BuscarPorId(id);
 
                 //Se ela não existir é informado que a instituição não foi encontrada
                 if (instTemp == null)
@@ -135,7 +140,6 @@ namespace Edux.Repositories
                     instTemp.Complemento = inst.Complemento;
                     instTemp.Numero = inst.Numero;
                     instTemp.Uf = inst.Uf;
-                    instTemp.Curso = inst.Curso;
                     instTemp.Logradouro = inst.Logradouro;
                     instTemp.Cep = inst.Cep;
 

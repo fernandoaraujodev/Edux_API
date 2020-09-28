@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Edux.Contexts;
 using Edux.Domains;
 using Edux.Interfaces;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace Edux.Repositories
@@ -30,7 +31,10 @@ namespace Edux.Repositories
             try
             {
 
-                return _ctx.Turma.ToList();
+                return _ctx.Turma
+                    .Include(c => c.ProfessorTurma)
+                    .Include(p => p.AlunoTurma)
+                    .ToList();
 
             }
             catch (Exception ex)
@@ -51,8 +55,11 @@ namespace Edux.Repositories
             try
             {
 
-                return _ctx.Turma.Find(id);
-
+                return _ctx.Turma
+                    .Include(c => c.IdCursoNavigation)
+                    .ThenInclude(a => a.IdInstituicaoNavigation)
+                    .FirstOrDefault(d => d.IdTurma == id);
+                
             }
             catch (Exception ex)
             {
@@ -162,7 +169,6 @@ namespace Edux.Repositories
         /// </summary>
         /// <param name="id">Id da turma</param>
         public void Remover(int id)
-
         {
 
             try

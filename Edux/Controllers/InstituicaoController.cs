@@ -101,7 +101,7 @@ namespace Edux.Controllers
         /// <param name="inst">Objeto instituição</param>
         // POST api/<InstituicaoController>
         [HttpPost]
-        public IActionResult Post([FromForm] Instituicao inst)
+        public IActionResult Post([FromBody] Instituicao inst)
         {
             try
             {
@@ -124,22 +124,13 @@ namespace Edux.Controllers
         /// <param name="inst">Dados da instituição que será aletrada</param>
         // PUT api/<InstituicaoController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] Instituicao inst)
+        public IActionResult Put(int id, [FromBody] Instituicao inst)
         {
             try
-            {
-                Instituicao instituicaoTemp = _instituicaoRepository.BuscarPorId(id);
+            { 
+                _instituicaoRepository.Editar(inst, id);
 
-                if(instituicaoTemp == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    _instituicaoRepository.Editar(inst);
-
-                    return Ok(inst);
-                }
+                 return Ok(inst);
             }
             catch (Exception ex)
             {

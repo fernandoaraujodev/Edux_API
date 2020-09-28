@@ -123,9 +123,6 @@ C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\runtimes\win\li
 C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.csprojAssemblyReference.cache
 C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.AssemblyInfoInputs.cache
 C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.AssemblyInfo.cs
-C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.csproj.CoreCompileInputs.cache
-C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.RazorTargetAssemblyInfo.cache
 C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.csproj.CopyComplete
 C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\staticwebassets\Edux.StaticWebAssets.Manifest.cache
@@ -549,3 +546,9 @@ C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\runtimes\win-ar
 C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\fic\Documents\api\Edux_API\Edux\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.csproj.CoreCompileInputs.cache
+C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\fic\Documents\api\Edux_API\Edux\obj\Debug\netcoreapp3.1\Edux.MvcApplicationPartsAssemblyInfo.cache

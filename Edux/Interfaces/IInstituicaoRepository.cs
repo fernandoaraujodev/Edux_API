@@ -12,7 +12,7 @@ namespace Edux.Interfaces
         Instituicao BuscarPorId(int id);
         List<Instituicao> BuscarPorNome(string nome);
         void Adicionar(Instituicao inst);
-        void Editar(Instituicao inst);
+        void Editar(Instituicao inst, int id);
         void Remover(int id);
 
     }
