@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Edux.Contexts;
 using Edux.Domains;
 using Edux.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Edux.Repositories
 {
@@ -23,7 +24,7 @@ namespace Edux.Repositories
         /// <summary>
         /// Método que lista todas as turmas
         /// </summary>
-        /// <returns>Retorna uma Lista de Turma</returns>
+        /// <returns>Retorna uma Lista de Turmas</returns>
         public List<Turma> Listar()
         {
             try
@@ -101,7 +102,6 @@ namespace Edux.Repositories
                 Turma turmaTemp = BuscarPorId(id);
 
                 //Verifica se a turma existe
-
                 //Caso não existe gera uma exception
 
                 if (turmaTemp == null)

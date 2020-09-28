@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Windows10\\Desktop\\Edux_API\\Edux\\Edux.csproj": {}
+    "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Windows10\\Desktop\\Edux_API\\Edux\\Edux.csproj": {
+    "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Windows10\\Desktop\\Edux_API\\Edux\\Edux.csproj",
+        "projectUniqueName": "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj",
         "projectName": "Edux",
-        "projectPath": "C:\\Users\\Windows10\\Desktop\\Edux_API\\Edux\\Edux.csproj",
-        "packagesPath": "C:\\Users\\Windows10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Windows10\\Desktop\\Edux_API\\Edux\\obj\\",
+        "projectPath": "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\Edux.csproj",
+        "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fic\\Documents\\api\\Edux_API\\Edux\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Windows10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

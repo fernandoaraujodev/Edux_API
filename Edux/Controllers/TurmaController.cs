@@ -26,8 +26,8 @@ namespace Edux.Controllers
         /// <summary>
         /// Método que mostra todas as turmas cadastradas 
         /// </summary>
-        /// <returns>Lista com todos as turmas</returns>
-        /// GET api/Turma/5
+        /// <returns>Lista com todas as turmas</returns>
+        /// GET api/Turma
         [HttpGet]
         public IActionResult Get()
         { 
@@ -35,12 +35,12 @@ namespace Edux.Controllers
             {
                 var turmas = _turmaRepository.Listar();
 
-                //Verifico se existe a turma cadastrada
+                //Verifica se existe a turma cadastrada
 
                 if (turmas.Count == 0)
                     return NoContent();
 
-                //Caso exista retorno Ok e as turmas cadastrados
+                //Caso exista retorno Ok e as turmas cadastradas
                 return Ok(new
                 {
                     totalCount = turmas.Count,
@@ -63,18 +63,18 @@ namespace Edux.Controllers
         }
 
         /// <summary>
-        /// Mostra um único produto
+        /// Mostra uma única turma
         /// </summary>
-        /// <param name="id">ID do produto</param>
-        /// <returns>Um produto</returns>
-        // GET api/produtos/5
+        /// <param name="id">ID da turma</param>
+        /// <returns>Objeto turma</returns>
+        // GET api/Turma/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
            try
            {
 
-                //Busco o produto pelo Id
+                //Busca a Turma pelo Id
                 Turma turma = _turmaRepository.BuscarPorId(id);
 
                 //Caso não exista retorna NotFound
@@ -82,7 +82,7 @@ namespace Edux.Controllers
                 if (turma == null)
                     return NotFound();
 
-                //Caso exista retorno Ok e os dados do produto
+                //Caso exista retorno Ok e os dados da turma
                 return Ok(turma);
 
             }
@@ -96,10 +96,10 @@ namespace Edux.Controllers
         }
 
         /// <summary>
-        /// Cadastra um novo turma
+        /// Cadastra um nova turma
         /// </summary>
         /// <param name="turma">Objeto turma</param>
-        /// <returns>Turma cadastrado</returns>
+        /// <returns>Turma cadastrada</returns>
         // POST api/Turma
         [HttpPost]
         public IActionResult Post([FromBody] Turma turma)
@@ -109,7 +109,7 @@ namespace Edux.Controllers
                 //Adiciona uma nova turma
                 _turmaRepository.Adicionar(turma);
 
-                //Retorna Ok caso a turma tenha sido cadastrado
+                //Retorna Ok caso a turma tenha sido cadastrada
                 return Ok(turma);
 
             }
@@ -134,11 +134,11 @@ namespace Edux.Controllers
         {
             try
             {
-                //Edita o produto
+                //Edita a turma
 
                 _turmaRepository.Editar(turma, id);
 
-                //Retorna Ok com os dados do produto
+                //Retorna Ok com os dados da turma
 
                 return Ok(turma);
             }
@@ -157,7 +157,7 @@ namespace Edux.Controllers
         /// Método que exclui um turma
         /// </summary>
         /// <param name="id">Id da turma</param>
-        /// <returns>Id excluído</returns>
+        /// <returns>O id excluído</returns>
         // DELETE api/produtos/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

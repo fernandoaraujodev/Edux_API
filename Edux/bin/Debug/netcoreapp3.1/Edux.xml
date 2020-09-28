@@ -4,26 +4,59 @@
         <name>Edux</name>
     </assembly>
     <members>
+        <member name="M:Edux.Controllers.InstituicaoController.Get">
+            <summary>
+            Esse endpoint é o que ira listar todas as instituições cadastradas no banco de dados
+            </summary>
+            <returns>Se ainda não tiver instituição cadastradas retorna 204 - Sem conteúdo ou retorna uma lista com todas as instituições</returns>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Get(System.Int32)">
+            <summary>
+            Método que busca a instituição com o id informado
+            </summary>
+            <param name="id">Id da instituição</param>
+            <returns>Objeto instituição</returns>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Post(Edux.Domains.Instituicao)">
+            <summary>
+            Método para cadastrar uma nova instituição
+            </summary>
+            <param name="inst">Objeto instituição</param>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Put(System.Int32,Edux.Domains.Instituicao)">
+            <summary>
+            Método para alterar uma instituição
+            </summary>
+            <param name="id">Id da instituição que será alterada</param>
+            <param name="inst">Dados da instituição que será aletrada</param>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Delete(System.Int32)">
+            <summary>
+            Método para deletar uma instituição
+            </summary>
+            <param name="id">Id da instituição</param>
+            <returns></returns>
+        </member>
         <member name="M:Edux.Controllers.TurmaController.Get">
             <summary>
             Método que mostra todas as turmas cadastradas 
             </summary>
-            <returns>Lista com todos as turmas</returns>
-            GET api/Turma/5
+            <returns>Lista com todas as turmas</returns>
+            GET api/Turma
         </member>
         <member name="M:Edux.Controllers.TurmaController.Get(System.Int32)">
             <summary>
-            Mostra um único produto
+            Mostra uma única turma
             </summary>
-            <param name="id">ID do produto</param>
-            <returns>Um produto</returns>
+            <param name="id">ID da turma</param>
+            <returns>Objeto turma</returns>
         </member>
         <member name="M:Edux.Controllers.TurmaController.Post(Edux.Domains.Turma)">
             <summary>
-            Cadastra um novo turma
+            Cadastra um nova turma
             </summary>
             <param name="turma">Objeto turma</param>
-            <returns>Turma cadastrado</returns>
+            <returns>Turma cadastrada</returns>
         </member>
         <member name="M:Edux.Controllers.TurmaController.Put(System.Int32,Edux.Domains.Turma)">
             <summary>
@@ -38,7 +71,7 @@
             Método que exclui um turma
             </summary>
             <param name="id">Id da turma</param>
-            <returns>Id excluído</returns>
+            <returns>O id excluído</returns>
         </member>
         <member name="M:Edux.Controllers.UsuarioController.GetUsuario(System.Int32)">
             <summary>
@@ -78,11 +111,49 @@
             </summary>
             <param name="id">id do usuario</param>
         </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Método que busca uma instituição pelo id
+            </summary>
+            <param name="id">Id da instituicao</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.BuscarPorNome(System.String)">
+            <summary>
+            Método que busca uma instituição pelo nome informado
+            </summary>
+            <param name="nome">String com o nome a ser buscado</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Listar">
+            <summary>
+            Lista todas as instituições cadastradas no contexto
+            </summary>
+            <returns>Lista de instituições cadastradas</returns>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Adicionar(Edux.Domains.Instituicao)">
+            <summary>
+            Método para adicionar uma nova instituição 
+            </summary>
+            <param name="inst">Objeto do tipo instituição</param>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Editar(Edux.Domains.Instituicao)">
+            <summary>
+            Método para editar uma instituição
+            </summary>
+            <param name="inst">Objeto do tipo instituição</param>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Remover(System.Int32)">
+            <summary>
+            Método que remove uma instituição do contexto
+            </summary>
+            <param name="id">Recebe o id da instituição</param>
+        </member>
         <member name="M:Edux.Repositories.TurmaRepository.Listar">
             <summary>
             Método que lista todas as turmas
             </summary>
-            <returns>Retorna uma Lista de Turma</returns>
+            <returns>Retorna uma Lista de Turmas</returns>
         </member>
         <member name="M:Edux.Repositories.TurmaRepository.BuscarPorId(System.Int32)">
             <summary>
