@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Edux</name>
+    </assembly>
+    <members>
+        <member name="M:Edux.Controllers.AlunoObjetivoController.Get">
+            <summary>
+            Esse endpoint é o que ira listar todas os alunos e objetivos da tabela AlunoObjetivo cadastrados no banco de dados
+            </summary>
+            <returns>Se ainda não tiver instituição cadastradas retorna 204 - Sem conteúdo ou retorna uma lista com todas as instituições</returns>
+        </member>
+        <member name="M:Edux.Controllers.AlunoObjetivoController.Get(System.Int32)">
+            <summary>
+            Método que busca um AlunoObjetivo com o id informado
+            </summary>
+            <param name="id">Id do AlunoObjetivo</param>
+            <returns>Objeto  AlunoObjetivo</returns>
+        </member>
+        <member name="M:Edux.Controllers.AlunoObjetivoController.Post(Edux.Domains.AlunoObjetivo)">
+            <summary>
+            Método para cadastrar um novo AlunoObjetivo
+            </summary>
+            <param name="alunoObjetivo">Objeto do tipo AlunoObjetivo</param>
+        </member>
+        <member name="M:Edux.Controllers.AlunoObjetivoController.Put(System.Int32,Edux.Domains.AlunoObjetivo)">
+            <summary>
+            Método para alterar um AlunoObjetivo
+            </summary>
+            <param name="id">Id do AlunoObjetivo que será alterada</param>
+            <param name="alunoObjetivo">Objeto AlunoObjetivo</param>
+        </member>
+        <member name="M:Edux.Controllers.AlunoObjetivoController.Delete(System.Int32)">
+            <summary>
+            Método para deletar um AlunoObjetivo
+            </summary>
+            <param name="id">Id do AlunoObjetivo</param>
+            <returns>Objeto AlunoObjetivo</returns>
+        </member>
+        <member name="M:Edux.Controllers.AlunoTurmaController.Post(Edux.Domains.AlunoTurma)">
+            <summary>
+            Cadastra AlunoTurma
+            </summary>
+            <param name="alunoTurma">alunoturma</param>
+            <returns>alunoturma cadastrado</returns>
+        </member>
+        <member name="M:Edux.Controllers.AlunoTurmaController.Get(System.Int32)">
+            <summary>
+            Busca AlunoTurma por id
+            </summary>
+            <param name="id">id</param>
+            <returns>alunoturma</returns>
+        </member>
+        <member name="M:Edux.Controllers.AlunoTurmaController.Get">
+            <summary>
+            Cadastra Lista de AlunoTurma 
+            </summary>
+            <returns>Mosta Lista de alunoturma cadastrados</returns>
+        </member>
+        <member name="M:Edux.Controllers.AlunoTurmaController.Put(System.Int32,Edux.Domains.AlunoTurma)">
+            <summary>
+            Altera AlunoTurma Cadastrado
+            </summary>
+            <param name="id">id</param>
+            <param name="alunoTurma">alunoturma</param>
+            <returns>alunoturma alterado</returns>
+        </member>
+        <member name="M:Edux.Controllers.AlunoTurmaController.Delete(System.Int32)">
+            <summary>
+            Deleta Id cadastrado de AlunoTurma
+            </summary>
+            <param name="id">id</param>
+            <returns>id removido</returns>
+        </member>
+        <member name="M:Edux.Controllers.CategoriaController.Get">
+            <summary>
+            Lista todas as Categorias cadastrados
+            </summary>
+            <returns>retorna uma lista com todas as Categorias</returns>
+        </member>
+        <member name="M:Edux.Controllers.CategoriaController.Get(System.Int32)">
+            <summary>
+            Busca a categoria com através do id
+            </summary>
+            <param name="id">Id da Categoria</param>
+            <returns>Objeto Categoria</returns>
+        </member>
+        <member name="M:Edux.Controllers.CategoriaController.Post(Edux.Domains.Categoria)">
+            <summary>
+            Cadastra uma nova Categoria
+            </summary>
+            <param name="categoria">Objeto Usuario</param>
+        </member>
+        <member name="M:Edux.Controllers.CategoriaController.Put(System.Int32,Edux.Domains.Categoria)">
+            <summary>
+            Altera uma Categoria
+            </summary>
+            <param name="id">Id da Categoria que será alterada</param>
+            <param name="categoria">Dados da Categoria que serão alterados</param>
+        </member>
+        <member name="M:Edux.Controllers.CategoriaController.Delete(System.Int32)">
+            <summary>
+            Remove uma Categoria
+            </summary>
+            <param name="id">Id da Categoria</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.CursoController.GetCurso">
+            <summary>
+            Mostra todos os cursos criados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.CursoController.GetCurso(System.Int32)">
+            <summary>
+            Busca o curso de acordo com o id passado
+            </summary>
+            <param name="id">id curso</param>
+            <returns>retorna o curso pertencente ao id</returns>
+        </member>
+        <member name="M:Edux.Controllers.CursoController.PutCurso(System.Int32,Edux.Domains.Curso)">
+            <summary>
+            Altera um curso com o id informado
+            </summary>
+            <param name="id">id do curso</param>
+            <param name="curso">objeto curso</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.CursoController.PostCurso(Edux.Domains.Curso)">
+            <summary>
+            Cadastra um novo curso
+            </summary>
+            <param name="curso">objeto curso</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.CursoController.DeleteCurso(System.Int32)">
+            <summary>
+            Remove um curso com o id informado
+            </summary>
+            <param name="id">id do curso</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.CurtidaController.Get">
+            <summary>
+            Esse endpoint é o que ira listar todas as curtidas cadastradas no banco de dados
+            </summary>
+            <returns>Se ainda não tiver curtidas cadastradas retorna 204 - Sem conteúdo ou retorna uma lista com todas as curtidas</returns>
+        </member>
+        <member name="M:Edux.Controllers.CurtidaController.Get(System.Int32)">
+            <summary>
+            Método que busca a curtida com o id informado
+            </summary>
+            <param name="id">Id da curtida</param>
+            <returns>Objeto Curtida</returns>
+        </member>
+        <member name="M:Edux.Controllers.CurtidaController.Post(Edux.Domains.Curtida)">
+            <summary>
+            Método para cadastrar uma nova curtida
+            </summary>
+            <param name="curtida">Objeto Curtida</param>
+        </member>
+        <member name="M:Edux.Controllers.CurtidaController.Delete(System.Int32)">
+            <summary>
+            Método para deletar uma curtida
+            </summary>
+            <param name="id">Id da curtida</param>
+            <returns>Objeto Curtida</returns>
+        </member>
+        <member name="M:Edux.Controllers.DicaController.GetDica">
+            <summary>
+            Mostra todas as dicas criadas
+            </summary>
+            <returns>uma lista dos cursos já cadastrados</returns>
+        </member>
+        <member name="M:Edux.Controllers.DicaController.GetDica(System.Int32)">
+            <summary>
+            Busca a dica de acordo com o id passado
+            </summary>
+            <param name="id">id dica</param>
+            <returns>retorna o dica pertencente ao id</returns>
+        </member>
+        <member name="M:Edux.Controllers.DicaController.PutDica(System.Int32,Edux.Domains.Dica)">
+            <summary>
+            Altera uma dica com o id informado
+            </summary>
+            <param name="id">id do dica</param>
+            <param name="dica">objeto dica</param>
+            <returns>objeto alterado</returns>
+        </member>
+        <member name="M:Edux.Controllers.DicaController.PostDica(Edux.Domains.Dica)">
+            <summary>
+            Cadastra uma nova dica
+            </summary>
+            <param name="dica">objeto dica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.DicaController.DeleteDica(System.Int32)">
+            <summary>
+            Deleta uma dica com o id informado
+            </summary>
+            <param name="id">id dica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Get">
+            <summary>
+            Esse endpoint é o que ira listar todas as instituições cadastradas no banco de dados
+            </summary>
+            <returns>Se ainda não tiver instituição cadastradas retorna 204 - Sem conteúdo ou retorna uma lista com todas as instituições</returns>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Get(System.Int32)">
+            <summary>
+            Método que busca a instituição com o id informado
+            </summary>
+            <param name="id">Id da instituição</param>
+            <returns>Objeto instituição</returns>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Post(Edux.Domains.Instituicao)">
+            <summary>
+            Método para cadastrar uma nova instituição
+            </summary>
+            <param name="inst">Objeto instituição</param>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Put(System.Int32,Edux.Domains.Instituicao)">
+            <summary>
+            Método para alterar uma instituição
+            </summary>
+            <param name="id">Id da instituição que será alterada</param>
+            <param name="inst">Dados da instituição que será aletrada</param>
+        </member>
+        <member name="M:Edux.Controllers.InstituicaoController.Delete(System.Int32)">
+            <summary>
+            Método para deletar uma instituição
+            </summary>
+            <param name="id">Id da instituição</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.LoginController.Login(Edux.Domains.Usuario)">
+            <summary>
+            Permite o acesso de usuários cadastrados
+            </summary>
+            <param name="login">informações do usuário (email e senha)</param>
+            <returns>Jsn Web Token válido por 30min</returns>
+        </member>
+        <member name="M:Edux.Controllers.ObjetivoController.Get">
+            <summary>
+            Mostra todos os objetivos cadastrados
+            </summary>
+            <returns>retorna uma lista com todas os objetivos</returns>
+        </member>
+        <member name="M:Edux.Controllers.ObjetivoController.Get(System.Int32)">
+            <summary>
+            Busca o objetivo com o id informado
+            </summary>
+            <param name="id">Id do objetivo</param>
+            <returns>Objeto objetivo</returns>
+        </member>
+        <member name="M:Edux.Controllers.ObjetivoController.Post(Edux.Domains.Objetivo)">
+            <summary>
+            Cadastra um novo objetivo
+            </summary>
+            <param name="obj">Objeto objetivo</param>
+        </member>
+        <member name="M:Edux.Controllers.ObjetivoController.Put(System.Int32,Edux.Domains.Objetivo)">
+            <summary>
+            Altera um objetivo
+            </summary>
+            <param name="id">Id do objetivo que será alterado</param>
+            <param name="obj">informações do objetivo que serão alterado</param>
+        </member>
+        <member name="M:Edux.Controllers.ObjetivoController.Delete(System.Int32)">
+            <summary>
+            Remove um objetivo
+            </summary>
+            <param name="id">Id do objetivo</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.PerfilController.Post(Edux.Domains.Perfil)">
+            <summary>
+            Cadastra um novo perfil
+            </summary>
+            <param name="perfil">Perfil</param>
+            <returns>perfil cadastrado</returns>
+        </member>
+        <member name="M:Edux.Controllers.PerfilController.Get(System.Int32)">
+            <summary>
+            Mostra um único perfil especifico
+            </summary>
+            <param name="id">ID do perfil</param>
+            <returns>Um perfil</returns>
+        </member>
+        <member name="M:Edux.Controllers.PerfilController.Get">
+            <summary>
+            Mostra todos os perfis cadastrados
+            </summary>
+            <returns>Lista com todos os perfis</returns>
+        </member>
+        <member name="M:Edux.Controllers.PerfilController.Put(System.Int32,Edux.Domains.Perfil)">
+            <summary>
+            Altera determinado perfil
+            </summary>
+            <param name="id">ID do perfil</param>
+            <param name="perfil">Objeto perfil co as alterações</param>
+            <returns>Indo do perfil alterado</returns>
+        </member>
+        <member name="M:Edux.Controllers.PerfilController.Delete(System.Int32)">
+            <summary>
+            Exclui um perfil
+            </summary>
+            <param name="id">ID do perfil</param>
+            <returns>Id excluido</returns>
+        </member>
+        <member name="M:Edux.Controllers.ProfessorTurmaController.Get">
+            <summary>
+            Lista todos os "ProfessorTurma" cadastrados
+            </summary>
+            <returns>retorna uma lista com todas os "ProfessorTurma"</returns>
+        </member>
+        <member name="M:Edux.Controllers.ProfessorTurmaController.Get(System.Int32)">
+            <summary>
+            Busca os "ProfessorTurma" com o id passado
+            </summary>
+            <param name="id">Id do "ProfessorTurma"</param>
+            <returns>Objeto "ProfessorTurma"</returns>
+        </member>
+        <member name="M:Edux.Controllers.ProfessorTurmaController.Post(Edux.Domains.ProfessorTurma)">
+            <summary>
+            Cadastra um novo "ProfessorTurma"
+            </summary>
+            <param name="profturm">Objeto "ProfessorTurma"</param>
+        </member>
+        <member name="M:Edux.Controllers.ProfessorTurmaController.Put(System.Int32,Edux.Domains.ProfessorTurma)">
+            <summary>
+            Altera um "ProfessorTurma"
+            </summary>
+            <param name="id">Id do "ProfessorTurma" que será alterada</param>
+            <param name="profturm">Dados do "ProfessorTurma" que serão alterados</param>
+        </member>
+        <member name="M:Edux.Controllers.ProfessorTurmaController.Delete(System.Int32)">
+            <summary>
+            Remove um ProfessorTurma
+            </summary>
+            <param name="id">Id do ProfessorTurma</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Get">
+            <summary>
+            Método que mostra todas as turmas cadastradas 
+            </summary>
+            <returns>Lista com todas as turmas</returns>
+            GET api/Turma
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Get(System.Int32)">
+            <summary>
+            Mostra uma única turma
+            </summary>
+            <param name="id">ID da turma</param>
+            <returns>Objeto turma</returns>
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Post(Edux.Domains.Turma)">
+            <summary>
+            Cadastra um nova turma
+            </summary>
+            <param name="turma">Objeto turma</param>
+            <returns>Turma cadastrada</returns>
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Put(System.Int32,Edux.Domains.Turma)">
+            <summary>
+            Método que altera determinada turma
+            </summary>
+            <param name="id">ID da Turma</param>
+            <param name="turma">Objeto Turma</param>
+            <returns>Objeto Turma com as informações alteradas</returns>
+        </member>
+        <member name="M:Edux.Controllers.TurmaController.Delete(System.Int32)">
+            <summary>
+            Método que exclui um turma
+            </summary>
+            <param name="id">Id da turma</param>
+            <returns>O id excluído</returns>
+        </member>
+        <member name="M:Edux.Controllers.UsuarioController.Get">
+            <summary>
+            Mostra todos os usuários cadastrados
+            </summary>
+            <returns>retorna uma lista com todas os usuários</returns>
+        </member>
+        <member name="M:Edux.Controllers.UsuarioController.Get(System.Int32)">
+            <summary>
+            Busca o usuário com o id passado
+            </summary>
+            <param name="id">Id do usuário</param>
+            <returns>Objeto usuário</returns>
+        </member>
+        <member name="M:Edux.Controllers.UsuarioController.Post(Edux.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="usuario">Objeto Usuario</param>
+        </member>
+        <member name="M:Edux.Controllers.UsuarioController.Put(System.Int32,Edux.Domains.Usuario)">
+            <summary>
+            Altera um usuário
+            </summary>
+            <param name="id">Id do usuario que será alterada</param>
+            <param name="usuario">Dados do usuário que serão alterados</param>
+        </member>
+        <member name="M:Edux.Controllers.UsuarioController.Delete(System.Int32)">
+            <summary>
+            Remove um usuário
+            </summary>
+            <param name="id">Id do usuário</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Interfaces.ICursoRepository.Listar">
+            <summary>
+            Lista todos os cursos na plataforma
+            </summary>
+            <returns>retorna uma lista de cursos</returns>
+        </member>
+        <member name="M:Edux.Interfaces.ICursoRepository.Adicionar(Edux.Domains.Curso)">
+            <summary>
+            Adiciona novos curso
+            </summary>
+            <param name="curso">Curso</param>
+        </member>
+        <member name="M:Edux.Interfaces.ICursoRepository.BuscarPorNome(System.String)">
+            <summary>
+            filtro por titulo
+            </summary>
+            <param name="titulo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Interfaces.ICursoRepository.Editar(Edux.Domains.Curso)">
+            <summary>
+            altera o curso existente
+            </summary>
+            <param name="curso">Curso</param>
+        </member>
+        <member name="M:Edux.Interfaces.ICursoRepository.Remover(System.Guid)">
+            <summary>
+            Deleta o curso pelo id
+            </summary>
+            <param name="id">id do curso</param>
+        </member>
+        <member name="M:Edux.Interfaces.IDicaRepository.Listar">
+            <summary>
+            Lista todos as dicas na plataforma
+            </summary>
+            <returns>retorna uma lista de dicas</returns>
+        </member>
+        <member name="M:Edux.Interfaces.IDicaRepository.Adicionar(Edux.Domains.Dica)">
+            <summary>
+            Adiciona novas dicas
+            </summary>
+            <param name="dica">Dica</param>
+        </member>
+        <member name="M:Edux.Interfaces.IDicaRepository.BuscarPorNome(System.String)">
+            <summary>
+            filtro por texto
+            </summary>
+            <param name="texto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Interfaces.IDicaRepository.Editar(Edux.Domains.Dica)">
+            <summary>
+            altera a dica existente
+            </summary>
+            <param name="dica">Dica</param>
+        </member>
+        <member name="M:Edux.Interfaces.IDicaRepository.Remover(System.Guid)">
+            <summary>
+            Deleta o dica pelo id
+            </summary>
+            <param name="id">id da dica</param>
+        </member>
+        <member name="M:Edux.Repositories.AlunoObjetivoRepository.Adicionar(Edux.Domains.AlunoObjetivo)">
+            <summary>
+            Método para adicionar um novo objetivo para um aluno
+            </summary>
+            <param name="alunoObjetivo">Objeto alunoObjetivo</param>
+        </member>
+        <member name="M:Edux.Repositories.AlunoObjetivoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Método que busca pelo Id todos os dados da tabela AlunoObjetivo
+            </summary>
+            <param name="id">Id de AlunoObjetivo</param>
+            <returns>Objeto AlunoObjetivo</returns>
+        </member>
+        <member name="M:Edux.Repositories.AlunoObjetivoRepository.Editar(Edux.Domains.AlunoObjetivo,System.Int32)">
+            <summary>
+            Método para editar um objeto AlunoObjetivo
+            </summary>
+            <param name="alunoObjetivo">Objeto AlunoObjetivo</param>
+            <param name="id">Id do AlunoObjetivo</param>
+        </member>
+        <member name="M:Edux.Repositories.AlunoObjetivoRepository.Listar">
+            <summary>
+            Método para listar todos os dados da tabela AlunoObjetivo
+            </summary>
+            <returns>Lista com todos os dados da tabela AlunoObjetivo</returns>
+        </member>
+        <member name="M:Edux.Repositories.AlunoObjetivoRepository.Remover(System.Int32)">
+            <summary>
+            Método para remover um AlunoObjetivo
+            </summary>
+            <param name="id">Id de AlunoObjetivo</param>
+        </member>
+        <member name="M:Edux.Repositories.CurtidaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Método que busca uma curtida pelo id
+            </summary>
+            <param name="id">Id da curtida</param>
+            <returns>Objeto Curtida</returns>
+        </member>
+        <member name="M:Edux.Repositories.CurtidaRepository.Listar">
+            <summary>
+            Lista todas as Curtidas
+            </summary>
+            <returns>Lista de curtidas cadastradas</returns>
+        </member>
+        <member name="M:Edux.Repositories.CurtidaRepository.Adicionar(Edux.Domains.Curtida)">
+            <summary>
+            Método para adicionar uma nova curtida 
+            </summary>
+            <param name="curtida">Objeto do tipo curtida</param>
+        </member>
+        <member name="M:Edux.Repositories.CurtidaRepository.Remover(System.Int32)">
+            <summary>
+            Método que remove uma curtida do contexto
+            </summary>
+            <param name="id">Recebe o id da curtida</param>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Método que busca uma instituição pelo id
+            </summary>
+            <param name="id">Id da instituicao</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.BuscarPorNome(System.String)">
+            <summary>
+            Método que busca uma instituição pelo nome informado
+            </summary>
+            <param name="nome">String com o nome a ser buscado</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Listar">
+            <summary>
+            Lista todas as instituições cadastradas no contexto
+            </summary>
+            <returns>Lista de instituições cadastradas</returns>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Adicionar(Edux.Domains.Instituicao)">
+            <summary>
+            Método para adicionar uma nova instituição 
+            </summary>
+            <param name="inst">Objeto do tipo instituição</param>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Editar(Edux.Domains.Instituicao,System.Int32)">
+            <summary>
+            Método para editar uma instituição
+            </summary>
+            <param name="inst">Objeto instituição</param>
+            <param name="id">Id da instituição</param>
+        </member>
+        <member name="M:Edux.Repositories.InstituicaoRepository.Remover(System.Int32)">
+            <summary>
+            Método que remove uma instituição do contexto
+            </summary>
+            <param name="id">Recebe o id da instituição</param>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Listar">
+            <summary>
+            Método que lista todas as turmas
+            </summary>
+            <returns>Retorna uma Lista de Turmas</returns>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Método para buscar uma turma pelo seu Id
+            </summary>
+            <param name="id">Id da turma</param>
+            <returns>Lista de turma</returns>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.BuscarPorNome(System.String)">
+            <summary>
+            Método que busca turmas pela descrição
+            </summary>
+            <param name="descricao">Descrição da turma</param>
+            <returns>Retorna uma lista de turmas</returns>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Editar(Edux.Domains.Turma,System.Int32)">
+            <summary>
+            Método para editar uma turma
+            </summary>
+            <param name="turma">Objeto Turma</param>
+            <param name="id">Id da turma</param>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Adicionar(Edux.Domains.Turma)">
+            <summary>
+            Método que adiciona uma nova Turma
+            </summary>
+            <param name="turma">Objeto do tipo Turma</param>
+        </member>
+        <member name="M:Edux.Repositories.TurmaRepository.Remover(System.Int32)">
+            <summary>
+            Método que remove uma turma
+            </summary>
+            <param name="id">Id da turma</param>
+        </member>
+    </members>
+</doc>
