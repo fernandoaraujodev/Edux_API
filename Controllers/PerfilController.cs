@@ -105,9 +105,9 @@ namespace Edux.Controllers
 
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                //TODO : Cadastrar mensagem de erro no dominio logErro
+                //Cadastrar mensagem de erro no dominio logErro
                 return BadRequest(new
                 {
                     StatusCode = 400,

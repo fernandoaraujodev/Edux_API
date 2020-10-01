@@ -8,15 +8,22 @@ using Microsoft.EntityFrameworkCore;
 using Edux.Contexts;
 using Edux.Domains;
 using Microsoft.AspNetCore.Authorization;
+using Edux.Interfaces;
+using Edux.Repositories;
 
 namespace Edux.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class CursoController : ControllerBase
     {
-        private readonly EduxContext _context = new EduxContext();
+        private readonly ICursoRepository _cursoRepository;
+
+        public CursoController()
+        {
+            _cursoRepository = new CursoRepository();
+        }
 
 
         // GET: api/Curso
@@ -24,10 +31,37 @@ namespace Edux.Controllers
         /// Mostra todos os cursos criados
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles = "Administrador, Aluno, Professor")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Curso>>> GetCurso()
+        public IActionResult Get()
         {
-            return await _context.Curso.ToListAsync();
+            try
+            {
+                var cursos = _cursoRepository.Listar();
+
+                // Se a variável estiver nula a api retorna NoContent - Sem conteúdo
+                if (cursos == null)
+                {
+                    return NoContent();
+                }
+                else
+                {
+                    return Ok(new
+                    {
+                        totalCount = cursos.Count(),
+                        data = cursos
+                    });
+                }
+
+            }
+            catch (Exception)
+            {
+                return BadRequest(new
+                {
+                    statusCode = 400,
+                    error = "Erro no endpoint Get - Entrar em contato com o departamento técnico"
+                });
+            }
         }
 
         // GET: api/Curso/5
@@ -36,17 +70,52 @@ namespace Edux.Controllers
         /// </summary>
         /// <param name="id">id curso</param>
         /// <returns>retorna o curso pertencente ao id</returns>
+        [Authorize(Roles = "Administrador, Aluno, Professor")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<Curso>> GetCurso(int id)
+        public IActionResult Get(int id)
         {
-            var curso = await _context.Curso.FindAsync(id);
-
-            if (curso == null)
+            try
             {
-                return NotFound();
-            }
+                Curso curso = _cursoRepository.BuscarPorId(id);
 
-            return curso;
+                if (curso == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(curso);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Se ocorrer alguma exceção retorna a messagem de erro para o frontend
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // POST: api/Curso
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Cadastra um novo curso
+        /// </summary>
+        /// <param name="curso">objeto curso</param>
+        /// <returns></returns>
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        public IActionResult Post([FromBody] Curso curso)
+        {
+            try
+            {
+                _cursoRepository.Adicionar(curso);
+
+                return Ok(curso);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT: api/Curso/5
@@ -58,51 +127,22 @@ namespace Edux.Controllers
         /// <param name="id">id do curso</param>
         /// <param name="curso">objeto curso</param>
         /// <returns></returns>
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCurso(int id, Curso curso)
+        public IActionResult Put(int id, [FromBody] Curso curso)
         {
-            if (id != curso.IdCurso)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(curso).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _cursoRepository.Editar(curso, id);
+
+                return Ok(curso);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!CursoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(ex.Message);
             }
-
-            return NoContent();
         }
 
-        // POST: api/Curso
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        /// <summary>
-        /// Cadastra um novo curso
-        /// </summary>
-        /// <param name="curso">objeto curso</param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult<Curso>> PostCurso(Curso curso)
-        {
-            _context.Curso.Add(curso);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCurso", new { id = curso.IdCurso }, curso);
-        }
 
         // DELETE: api/Curso/5
         /// <summary>
@@ -110,24 +150,29 @@ namespace Edux.Controllers
         /// </summary>
         /// <param name="id">id do curso</param>
         /// <returns></returns>
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Curso>> DeleteCurso(int id)
+        public IActionResult Delete(int id)
         {
-            var curso = await _context.Curso.FindAsync(id);
-            if (curso == null)
+            try
             {
-                return NotFound();
+                Curso curso = _cursoRepository.BuscarPorId(id);
+
+                if (curso == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    _cursoRepository.Remover(id);
+
+                    return Ok(curso);
+                }
             }
-
-            _context.Curso.Remove(curso);
-            await _context.SaveChangesAsync();
-
-            return curso;
-        }
-
-        private bool CursoExists(int id)
-        {
-            return _context.Curso.Any(e => e.IdCurso == id);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

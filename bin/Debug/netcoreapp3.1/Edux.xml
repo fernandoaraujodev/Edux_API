@@ -105,20 +105,27 @@
             <param name="id">Id da Categoria</param>
             <returns></returns>
         </member>
-        <member name="M:Edux.Controllers.CursoController.GetCurso">
+        <member name="M:Edux.Controllers.CursoController.Get">
             <summary>
             Mostra todos os cursos criados
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Edux.Controllers.CursoController.GetCurso(System.Int32)">
+        <member name="M:Edux.Controllers.CursoController.Get(System.Int32)">
             <summary>
             Busca o curso de acordo com o id passado
             </summary>
             <param name="id">id curso</param>
             <returns>retorna o curso pertencente ao id</returns>
         </member>
-        <member name="M:Edux.Controllers.CursoController.PutCurso(System.Int32,Edux.Domains.Curso)">
+        <member name="M:Edux.Controllers.CursoController.Post(Edux.Domains.Curso)">
+            <summary>
+            Cadastra um novo curso
+            </summary>
+            <param name="curso">objeto curso</param>
+            <returns></returns>
+        </member>
+        <member name="M:Edux.Controllers.CursoController.Put(System.Int32,Edux.Domains.Curso)">
             <summary>
             Altera um curso com o id informado
             </summary>
@@ -126,14 +133,7 @@
             <param name="curso">objeto curso</param>
             <returns></returns>
         </member>
-        <member name="M:Edux.Controllers.CursoController.PostCurso(Edux.Domains.Curso)">
-            <summary>
-            Cadastra um novo curso
-            </summary>
-            <param name="curso">objeto curso</param>
-            <returns></returns>
-        </member>
-        <member name="M:Edux.Controllers.CursoController.DeleteCurso(System.Int32)">
+        <member name="M:Edux.Controllers.CursoController.Delete(System.Int32)">
             <summary>
             Remove um curso com o id informado
             </summary>
@@ -166,40 +166,40 @@
             <param name="id">Id da curtida</param>
             <returns>Objeto Curtida</returns>
         </member>
-        <member name="M:Edux.Controllers.DicaController.GetDica">
+        <member name="M:Edux.Controllers.DicaController.Get">
             <summary>
-            Mostra todas as dicas criadas
+            Mostra as dicas cadastradas no dbSet 
             </summary>
-            <returns>uma lista dos cursos já cadastrados</returns>
+            <returns>Lista com todas as dicas</returns>
         </member>
-        <member name="M:Edux.Controllers.DicaController.GetDica(System.Int32)">
+        <member name="M:Edux.Controllers.DicaController.Get(System.Int32)">
             <summary>
-            Busca a dica de acordo com o id passado
+            Mostra uma única dica
             </summary>
-            <param name="id">id dica</param>
-            <returns>retorna o dica pertencente ao id</returns>
+            <param name="id">ID da Dica</param>
+            <returns>Uma Dica</returns>
         </member>
-        <member name="M:Edux.Controllers.DicaController.PutDica(System.Int32,Edux.Domains.Dica)">
-            <summary>
-            Altera uma dica com o id informado
-            </summary>
-            <param name="id">id do dica</param>
-            <param name="dica">objeto dica</param>
-            <returns>objeto alterado</returns>
-        </member>
-        <member name="M:Edux.Controllers.DicaController.PostDica(Edux.Domains.Dica)">
+        <member name="M:Edux.Controllers.DicaController.Post(Edux.Domains.Dica)">
             <summary>
             Cadastra uma nova dica
             </summary>
-            <param name="dica">objeto dica</param>
-            <returns></returns>
+            <param name="dica">Objeto completo Dica</param>
+            <returns>Dica cadastrada</returns>
         </member>
-        <member name="M:Edux.Controllers.DicaController.DeleteDica(System.Int32)">
+        <member name="M:Edux.Controllers.DicaController.Put(System.Int32,Edux.Domains.Dica)">
             <summary>
-            Deleta uma dica com o id informado
+            Altera determinada Dica
             </summary>
-            <param name="id">id dica</param>
-            <returns></returns>
+            <param name="id">ID da Dica</param>
+            <param name="dica">Objeto Dica com as alterações</param>
+            <returns>Info da Dica alterada</returns>
+        </member>
+        <member name="M:Edux.Controllers.DicaController.Delete(System.Int32)">
+            <summary>
+            Exclui uma dica
+            </summary>
+            <param name="id">ID da dica</param>
+            <returns>ID excluído</returns>
         </member>
         <member name="M:Edux.Controllers.InstituicaoController.Get">
             <summary>
@@ -411,68 +411,6 @@
             <param name="id">Id do usuário</param>
             <returns></returns>
         </member>
-        <member name="M:Edux.Interfaces.ICursoRepository.Listar">
-            <summary>
-            Lista todos os cursos na plataforma
-            </summary>
-            <returns>retorna uma lista de cursos</returns>
-        </member>
-        <member name="M:Edux.Interfaces.ICursoRepository.Adicionar(Edux.Domains.Curso)">
-            <summary>
-            Adiciona novos curso
-            </summary>
-            <param name="curso">Curso</param>
-        </member>
-        <member name="M:Edux.Interfaces.ICursoRepository.BuscarPorNome(System.String)">
-            <summary>
-            filtro por titulo
-            </summary>
-            <param name="titulo"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Edux.Interfaces.ICursoRepository.Editar(Edux.Domains.Curso)">
-            <summary>
-            altera o curso existente
-            </summary>
-            <param name="curso">Curso</param>
-        </member>
-        <member name="M:Edux.Interfaces.ICursoRepository.Remover(System.Guid)">
-            <summary>
-            Deleta o curso pelo id
-            </summary>
-            <param name="id">id do curso</param>
-        </member>
-        <member name="M:Edux.Interfaces.IDicaRepository.Listar">
-            <summary>
-            Lista todos as dicas na plataforma
-            </summary>
-            <returns>retorna uma lista de dicas</returns>
-        </member>
-        <member name="M:Edux.Interfaces.IDicaRepository.Adicionar(Edux.Domains.Dica)">
-            <summary>
-            Adiciona novas dicas
-            </summary>
-            <param name="dica">Dica</param>
-        </member>
-        <member name="M:Edux.Interfaces.IDicaRepository.BuscarPorNome(System.String)">
-            <summary>
-            filtro por texto
-            </summary>
-            <param name="texto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Edux.Interfaces.IDicaRepository.Editar(Edux.Domains.Dica)">
-            <summary>
-            altera a dica existente
-            </summary>
-            <param name="dica">Dica</param>
-        </member>
-        <member name="M:Edux.Interfaces.IDicaRepository.Remover(System.Guid)">
-            <summary>
-            Deleta o dica pelo id
-            </summary>
-            <param name="id">id da dica</param>
-        </member>
         <member name="M:Edux.Repositories.AlunoObjetivoRepository.Adicionar(Edux.Domains.AlunoObjetivo)">
             <summary>
             Método para adicionar um novo objetivo para um aluno
@@ -505,6 +443,45 @@
             </summary>
             <param name="id">Id de AlunoObjetivo</param>
         </member>
+        <member name="M:Edux.Repositories.CursoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um curso pelo Id
+            </summary>
+            <param name="id">Id do curso</param>
+            <returns>Objeto curso com o id informado</returns>
+        </member>
+        <member name="M:Edux.Repositories.CursoRepository.BuscarPorNome(System.String)">
+            <summary>
+            Busca um curso pelo nome informado
+            </summary>
+            <param name="nome">String com o nome a ser buscado</param>
+            <returns>Lista com de cursos com esse nome</returns>
+        </member>
+        <member name="M:Edux.Repositories.CursoRepository.Listar">
+            <summary>
+            Lista todos os cursos na plataforma
+            </summary>
+            <returns>Lista de cursos</returns>
+        </member>
+        <member name="M:Edux.Repositories.CursoRepository.Adicionar(Edux.Domains.Curso)">
+            <summary>
+            Método para adicionar um novo curso 
+            </summary>
+            <param name="curso">Objeto do tipo curso</param>
+        </member>
+        <member name="M:Edux.Repositories.CursoRepository.Editar(Edux.Domains.Curso,System.Int32)">
+            <summary>
+            Editar um curso
+            </summary>
+            <param name="curso">Objeto Curso</param>
+            <param name="id">Id do Curso</param>
+        </member>
+        <member name="M:Edux.Repositories.CursoRepository.Remover(System.Int32)">
+            <summary>
+            Remove um curso contexto
+            </summary>
+            <param name="id">Recebe o id do curso</param>
+        </member>
         <member name="M:Edux.Repositories.CurtidaRepository.BuscarPorId(System.Int32)">
             <summary>
             Método que busca uma curtida pelo id
@@ -529,6 +506,38 @@
             Método que remove uma curtida do contexto
             </summary>
             <param name="id">Recebe o id da curtida</param>
+        </member>
+        <member name="M:Edux.Repositories.DicaRepository.Listar">
+            <summary>
+            Lista todas as dicas cadastrados
+            </summary>
+            <returns>Retorna uma Lista de Dicas</returns>
+        </member>
+        <member name="M:Edux.Repositories.DicaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma dica pelo seu Id
+            </summary>
+            <param name="id">Id da Dica</param>
+            <returns>Objeto Dica</returns>
+        </member>
+        <member name="M:Edux.Repositories.DicaRepository.Editar(Edux.Domains.Dica,System.Int32)">
+            <summary>
+            Edita uma Dica
+            </summary>
+            <param name="dica">Dica a ser editada</param>
+            <param name="id">Id da dica</param>
+        </member>
+        <member name="M:Edux.Repositories.DicaRepository.Adicionar(Edux.Domains.Dica)">
+            <summary>
+            Adiciona uma nova Dica
+            </summary>
+            <param name="dica">Objeto do tipo Dica</param>
+        </member>
+        <member name="M:Edux.Repositories.DicaRepository.Remover(System.Int32)">
+            <summary>
+            Remove uma Dica
+            </summary>
+            <param name="id">Id da Dica</param>
         </member>
         <member name="M:Edux.Repositories.InstituicaoRepository.BuscarPorId(System.Int32)">
             <summary>

@@ -1,6 +1,7 @@
 ﻿using Edux.Contexts;
 using Edux.Domains;
 using Edux.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,23 @@ namespace Edux.Repositories
 {
     public class DicaRepository : IDicaRepository
     {
-        private readonly EduxContext _context = new EduxContext();
+        private readonly EduxContext _ctx;
 
-        public void Adicionar(Dica dica)
+        public DicaRepository()
         {
-            throw new NotImplementedException();
+            _ctx = new EduxContext();
         }
 
-        public Dica BuscarPorId(Guid id)
+        #region Leitura
+        /// <summary>
+        /// Lista todas as dicas cadastrados
+        /// </summary>
+        /// <returns>Retorna uma Lista de Dicas</returns>
+        public List<Dica> Listar()
         {
             try
             {
-                return _context.Dica.Find(id);
+                return _ctx.Dica.ToList();
             }
             catch (Exception ex)
             {
@@ -29,24 +35,96 @@ namespace Edux.Repositories
             }
         }
 
-        public List<Dica> BuscarPorNome(string texto)
+        /// <summary>
+        /// Busca uma dica pelo seu Id
+        /// </summary>
+        /// <param name="id">Id da Dica</param>
+        /// <returns>Objeto Dica</returns>
+        public Dica BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                
+                return _ctx.Dica
+                    .Include(c => c.IdUsuarioNavigation)
+                    .FirstOrDefault(x => x.IdDica == id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public void Editar(Dica dica)
+        #endregion
+
+        #region Gravação
+        /// <summary>
+        /// Edita uma Dica
+        /// </summary>
+        /// <param name="dica">Dica a ser editada</param>
+        /// <param name="id">Id da dica</param>
+        public void Editar(Dica dica, int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dica dicaTemp = BuscarPorId(id);
+
+                if (dicaTemp == null)
+                    throw new Exception("Dica não encontrada");
+
+                //Caso exista altera sua propriedades
+                dicaTemp.Texto = dica.Texto;
+                dicaTemp.IdUsuario = dica.IdUsuario;
+
+                _ctx.Dica.Update(dicaTemp);
+                //Salva o contexto
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public List<Dica> Listar()
+        /// <summary>
+        /// Adiciona uma nova Dica
+        /// </summary>
+        /// <param name="dica">Objeto do tipo Dica</param>
+        public void Adicionar(Dica dica)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.Dica.Add(dica);
+                
+                //Salva as alterações no contexto
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public void Remover(Guid id)
+        /// <summary>
+        /// Remove uma Dica
+        /// </summary>
+        /// <param name="id">Id da Dica</param>
+        public void Remover(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dica dicaTemp = BuscarPorId(id);
+
+                //Remove a dica do dbSet
+                _ctx.Dica.Remove(dicaTemp);
+                //Salva as alteráções do contexto
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
+        #endregion
     }
 }

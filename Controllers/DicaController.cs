@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Edux.Contexts;
 using Edux.Domains;
 using Microsoft.AspNetCore.Authorization;
+using Edux.Interfaces;
+using Edux.Repositories;
+using Edux.Utils;
 
 namespace Edux.Controllers
 {
@@ -15,123 +18,146 @@ namespace Edux.Controllers
     [ApiController]
     public class DicaController : ControllerBase
     {
-        private readonly EduxContext _context = new EduxContext();
+        private readonly IDicaRepository _dicaRepository;
 
+        public DicaController()
+        {
+            _dicaRepository = new DicaRepository();
+        }
 
-        // GET: api/Dica
         /// <summary>
-        /// Mostra todas as dicas criadas
+        /// Mostra as dicas cadastradas no dbSet 
         /// </summary>
-        /// <returns>uma lista dos cursos já cadastrados</returns>
+        /// <returns>Lista com todas as dicas</returns>
         [Authorize(Roles = "Professor, Administrador, Aluno")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Dica>>> GetDica()
+        public IActionResult Get()
         {
-            return await _context.Dica.ToListAsync();
-        }
-
-        // GET: api/Dica/5
-        /// <summary>
-        /// Busca a dica de acordo com o id passado
-        /// </summary>
-        /// <param name="id">id dica</param>
-        /// <returns>retorna o dica pertencente ao id</returns>
-        [Authorize(Roles = "Professor, Administrador, Aluno")]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Dica>> GetDica(int id)
-        {
-            var dica = await _context.Dica.FindAsync(id);
-
-            if (dica == null)
-            {
-                return NotFound();
-            }
-
-            return dica;
-        }
-
-        // PUT: api/Dica/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        /// <summary>
-        /// Altera uma dica com o id informado
-        /// </summary>
-        /// <param name="id">id do dica</param>
-        /// <param name="dica">objeto dica</param>
-        /// <returns>objeto alterado</returns>
-        [Authorize(Roles = "Professor")]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDica(int id, Dica dica)
-        {
-            if (id != dica.IdDica)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(dica).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DicaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                var dica = _dicaRepository.Listar();
 
-            return NoContent();
+                if (dica.Count == 0)
+                    return NoContent();
+
+                //Caso exista retorno Ok e as dicas cadastradas
+                return Ok(new
+                {
+                    totalCount = dica.Count,
+                    data = dica
+                });
+            }
+            catch (Exception)
+            {
+                return BadRequest(new
+                {
+                    statusCode = 400,
+                    error = "Ocorreu um erro no endpoint Get/dica, envie um e-mail para email@email.com informando"
+                });
+            }
         }
 
-        // POST: api/Dica
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Mostra uma única dica
+        /// </summary>
+        /// <param name="id">ID da Dica</param>
+        /// <returns>Uma Dica</returns>
+        [Authorize(Roles = "Professor, Administrador, Aluno")]
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                Dica dica = _dicaRepository.BuscarPorId(id);
+
+                if (dica == null)
+                    return NotFound();
+
+                return Ok(dica);
+            }
+            catch (Exception ex)
+            {
+                //Caso ocorra algum erro retorno BadRequest e a mensagem da exception
+                return BadRequest(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Cadastra uma nova dica
         /// </summary>
-        /// <param name="dica">objeto dica</param>
-        /// <returns></returns>
+        /// <param name="dica">Objeto completo Dica</param>
+        /// <returns>Dica cadastrada</returns>
         [Authorize(Roles = "Professor")]
         [HttpPost]
-        public async Task<ActionResult<Dica>> PostDica(Dica dica)
+        public IActionResult Post([FromForm] Dica dica)
         {
-            _context.Dica.Add(dica);
-            await _context.SaveChangesAsync();
+            try
+            {
+                if (dica.Img != null)
+                {
+                    var Imagem = Upload.Local(dica.Img);
 
-            return CreatedAtAction("GetDica", new { id = dica.IdDica }, dica);
+                    dica.Imagem = Imagem;
+                }
+
+                //Adiciona uma nova dica
+                _dicaRepository.Adicionar(dica);
+
+                return Ok(dica);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // DELETE: api/Dica/5
         /// <summary>
-        /// Deleta uma dica com o id informado
+        /// Altera determinada Dica
         /// </summary>
-        /// <param name="id">id dica</param>
-        /// <returns></returns>
+        /// <param name="id">ID da Dica</param>
+        /// <param name="dica">Objeto Dica com as alterações</param>
+        /// <returns>Info da Dica alterada</returns>
+        [Authorize(Roles = "Professor")]
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Dica dica)
+        {
+            try
+            {
+                _dicaRepository.Editar(dica, id);
+
+                //Retorna Ok com os dados do produto
+                return Ok(dica);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Exclui uma dica
+        /// </summary>
+        /// <param name="id">ID da dica</param>
+        /// <returns>ID excluído</returns>
         [Authorize(Roles = "Professor")]
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Dica>> DeleteDica(int id)
+        public IActionResult Delete(int id)
         {
-            var dica = await _context.Dica.FindAsync(id);
-            if (dica == null)
+            try
             {
-                return NotFound();
+                var dica = _dicaRepository.BuscarPorId(id);
+
+                if (dica == null)
+                    return NotFound();
+
+                _dicaRepository.Remover(id);
+                //Retorna Ok
+                return Ok(id);
             }
-
-            _context.Dica.Remove(dica);
-            await _context.SaveChangesAsync();
-
-            return dica;
-        }
-
-        private bool DicaExists(int id)
-        {
-            return _context.Dica.Any(e => e.IdDica == id);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

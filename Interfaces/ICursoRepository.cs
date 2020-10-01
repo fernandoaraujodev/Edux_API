@@ -8,40 +8,19 @@ namespace Edux.Interfaces
 {
     interface ICursoRepository
     {
-        /// <summary>
-        /// Lista todos os cursos na plataforma
-        /// </summary>
-        /// <returns>retorna uma lista de cursos</returns>
+     
         List<Curso> Listar();
 
-        Curso BuscarPorId(Guid id);
+        Curso BuscarPorId(int id);
 
-        /// <summary>
-        /// Adiciona novos curso
-        /// </summary>
-        /// <param name="curso">Curso</param>
         void Adicionar(Curso curso);
 
-        /// <summary>
-        /// filtro por titulo
-        /// </summary>
-        /// <param name="titulo"></param>
-        /// <returns></returns>
         List<Curso> BuscarPorNome(string titulo);
 
-        /// <summary>
-        /// altera o curso existente
-        /// </summary>
-        /// <param name="curso">Curso</param>
-        void Editar(Curso curso);
+        void Editar(Curso curso, int id);
 
-        /// <summary>
-        /// Deleta o curso pelo id
-        /// </summary>
-        /// <param name="id">id do curso</param>
-        void Remover(Guid id);
+        void Remover(int id);
 
-        //DataUltimoAcesso???
 
 
     }
