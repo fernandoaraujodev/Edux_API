@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pPzd2pFd5wcSdBXJSvXhGaVEg4LbW4OHn6YwGp6SiUZew1vmca6cJPwZ/u3OYIGPJZLxGd/N60dYP0tWfGuRQw==",
+  "dgSpecHash": "t7J8vlAngvUEnugkN+C030imgAlQBO5yezPV+TIBcMnf1CSI+jcOJ5GJDEgSCXpmwBQq8KtbHyvm2g8f5DToKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fic\\Desktop\\Edux_API\\Edux.csproj",
+  "projectFilePath": "C:\\Users\\fic\\Desktop\\FrontEndApi\\Edux.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fic\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\fic\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

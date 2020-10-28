@@ -32,6 +32,17 @@ namespace Edux
         {
             services.AddControllers();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyPolicy",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                    });
+            });
+
             //Adicionando o metodo para criação do SWAGGER
             services.AddSwaggerGen(c =>
             {
@@ -95,6 +106,8 @@ namespace Edux
 
             // Usando a autenticação
             app.UseAuthentication();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

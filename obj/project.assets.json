@@ -9134,11 +9134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fic\\Desktop\\Edux_API\\Edux.csproj",
+      "projectUniqueName": "C:\\Users\\fic\\Desktop\\FrontEndApi\\Edux.csproj",
       "projectName": "Edux",
-      "projectPath": "C:\\Users\\fic\\Desktop\\Edux_API\\Edux.csproj",
+      "projectPath": "C:\\Users\\fic\\Desktop\\FrontEndApi\\Edux.csproj",
       "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fic\\Desktop\\Edux_API\\obj\\",
+      "outputPath": "C:\\Users\\fic\\Desktop\\FrontEndApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9224,7 +9224,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
