@@ -17,7 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Edux.Controllers
 {
-    [Authorize(Roles = "Administrador, Professor, Aluno")]
+    //[Authorize(Roles = "Administrador, Professor, Aluno")]
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase

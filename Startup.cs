@@ -43,14 +43,14 @@ namespace Edux
                     });
             });
 
-            //Adicionando o metodo para criação do SWAGGER
+            //Adicionando o metodo para criaï¿½ï¿½o do SWAGGER
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
                     Title = "Edux API",
-                    Description = "Com o intuito de trazer uma experiência gamificada para os alunos, a equipe formada por Nicollas, Luis, Kaique, João Vitor e Fernando propuseram elaborar um projeto chamado EduX, que visa atender os 4 arquétipos de jogador, segundo Bartle para trazer maior imersão para os alunos e também fácil entendimento sobre o plano de curso de cada especialidade assim como seus objetivos a serem alcançados com uso de ASP.NET Core Web API",
+                    Description = "Com o intuito de trazer uma experiï¿½ncia gamificada para os alunos, a equipe formada por Nicollas, Luis, Kaique, Joï¿½o Vitor e Fernando propuseram elaborar um projeto chamado EduX, que visa atender os 4 arquï¿½tipos de jogador, segundo Bartle para trazer maior imersï¿½o para os alunos e tambï¿½m fï¿½cil entendimento sobre o plano de curso de cada especialidade assim como seus objetivos a serem alcanï¿½ados com uso de ASP.NET Core Web API",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
@@ -65,7 +65,7 @@ namespace Edux
                     }
                 });
 
-                // Gera os comentários em XML da documentação dos métodos 
+                // Gera os comentï¿½rios em XML da documentaï¿½ï¿½o dos mï¿½todos 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -104,14 +104,14 @@ namespace Edux
 
             app.UseRouting();
 
-            // Usando a autenticação
+            // Usando a autenticaï¿½ï¿½o
             app.UseAuthentication();
 
-            app.UseCors();
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 
-            // Habilitando o uso do SWAGGER na aplicação
+            // Habilitando o uso do SWAGGER na aplicaï¿½ï¿½o
             app.UseSwagger();
 
             // Criando endpoints e erando UI do SWAGGER
