@@ -33,7 +33,7 @@ namespace Edux.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-DA6MBAT\\SQLEXPRESS; Initial Catalog= Edux; User Id=sa; Password=ps132");
+                optionsBuilder.UseSqlServer("Data Source = LAB107801\\SQLEXPRESS3; Initial Catalog= Edux; User Id=sa; Password=sa132");
             }
         }
 

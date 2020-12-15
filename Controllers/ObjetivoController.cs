@@ -132,18 +132,14 @@ namespace Edux.Controllers
         {
             try
             {
-                Objetivo obj = _objRepository.BuscarPorId(id);
+                var obj = _objRepository.BuscarPorId(id);
 
                 if (obj == null)
-                {
                     return NotFound();
-                }
-                else
-                {
-                    _objRepository.Remover(id);
 
-                    return Ok(obj);
-                }
+                _objRepository.Remover(id);
+                return Ok(obj);
+       
             }
             catch (Exception ex)
             {

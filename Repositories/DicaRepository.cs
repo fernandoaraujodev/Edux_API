@@ -27,7 +27,10 @@ namespace Edux.Repositories
         {
             try
             {
-                return _ctx.Dica.ToList();
+                return _ctx.Dica
+                    .Include(x => x.Curtida)
+                    .Include(y => y.IdUsuarioNavigation)
+                    .ToList();
             }
             catch (Exception ex)
             {

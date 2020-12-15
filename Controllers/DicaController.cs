@@ -29,7 +29,8 @@ namespace Edux.Controllers
         /// Mostra as dicas cadastradas no dbSet 
         /// </summary>
         /// <returns>Lista com todas as dicas</returns>
-        [Authorize(Roles = "Professor, Administrador, Aluno")]
+        //[Authorize(Roles = "Professor, Administrador, Aluno")]
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Get()
         {
@@ -62,7 +63,8 @@ namespace Edux.Controllers
         /// </summary>
         /// <param name="id">ID da Dica</param>
         /// <returns>Uma Dica</returns>
-        [Authorize(Roles = "Professor, Administrador, Aluno")]
+        //[Authorize(Roles = "Professor, Administrador, Aluno")]
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -87,7 +89,8 @@ namespace Edux.Controllers
         /// </summary>
         /// <param name="dica">Objeto completo Dica</param>
         /// <returns>Dica cadastrada</returns>
-        [Authorize(Roles = "Professor")]
+        //[Authorize(Roles = "Professor")]
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Post([FromForm] Dica dica)
         {
@@ -117,7 +120,8 @@ namespace Edux.Controllers
         /// <param name="id">ID da Dica</param>
         /// <param name="dica">Objeto Dica com as alterações</param>
         /// <returns>Info da Dica alterada</returns>
-        [Authorize(Roles = "Professor")]
+        //[Authorize(Roles = "Professor")]
+        [AllowAnonymous]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Dica dica)
         {
@@ -139,7 +143,8 @@ namespace Edux.Controllers
         /// </summary>
         /// <param name="id">ID da dica</param>
         /// <returns>ID excluído</returns>
-        [Authorize(Roles = "Professor")]
+        //[Authorize(Roles = "Professor")]
+        [AllowAnonymous]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

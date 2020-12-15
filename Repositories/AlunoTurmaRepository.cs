@@ -1,6 +1,7 @@
 ﻿using Edux.Contexts;
 using Edux.Domains;
 using Edux.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,8 +71,11 @@ namespace Edux.Repositories
             try
             {
                 //Coloca o alunoturma em uma lista
-                List<AlunoTurma> alunoTurma = _ctx.AlunoTurma.ToList();
-                return alunoTurma;
+                //List<AlunoTurma> alunoTurma = _ctx.AlunoTurma
+                //    .Include(y => y.IdUsuarioNavigation)
+                //   .Include(z => z.IdTurmaNavigation)
+                //   .ToList();
+                return _ctx.AlunoTurma.Include(y => y.IdUsuarioNavigation).Include(z => z.IdTurmaNavigation).ToList();
             }
             catch (Exception ex)
             {

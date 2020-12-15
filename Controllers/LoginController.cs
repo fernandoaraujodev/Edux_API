@@ -51,6 +51,7 @@ namespace Edux.Controllers
             var claims = new[] {
         new Claim(JwtRegisteredClaimNames.NameId, userInfo.Nome),
         new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
+        new Claim(JwtRegisteredClaimNames.FamilyName, userInfo.IdUsuario.ToString()),
         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, userInfo.IdPerfilNavigation.Permissao)
     };
@@ -91,7 +92,7 @@ namespace Edux.Controllers
             if (user != null)
             {
                 var tokenString = GenerateJSONWebToken(user);
-                response = Ok(new { token = tokenString });
+                response = Ok(new { token = tokenString});
             }
 
             return response;

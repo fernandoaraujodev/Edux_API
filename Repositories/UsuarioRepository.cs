@@ -36,7 +36,10 @@ namespace Edux.Repositories
         {
             try
             {
-                return _ctx.Usuario.ToList();
+                return _ctx.Usuario
+                    .Include(c => c.AlunoTurma)
+                    .Include(y => y.ProfessorTurma)
+                    .ToList();
             }
             catch (Exception ex)
             {

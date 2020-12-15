@@ -116,8 +116,8 @@ namespace Edux.Repositories
             try
             {
                 return _ctx.AlunoObjetivo
-                                .Include(i => i.IdAlunoTurmaNavigation)
-                                .Include(y => y.IdObjetivoNavigation)
+                                .Include(y => y.IdAlunoTurmaNavigation)
+                                .Include(x => x.IdObjetivoNavigation)
                                 .ToList();
             }
             catch (Exception ex)

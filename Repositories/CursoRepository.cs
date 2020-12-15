@@ -71,7 +71,9 @@ namespace Edux.Repositories
         {
             try
             {
-                return _ctx.Curso.ToList();
+                return _ctx.Curso
+                    .Include( x => x.IdInstituicaoNavigation)    
+                    .ToList();
             
             }
             catch (Exception ex)

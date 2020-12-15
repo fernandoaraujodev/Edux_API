@@ -37,7 +37,8 @@ namespace Edux
                 options.AddPolicy(name: "MyPolicy",
                     builder =>
                     {
-                        builder.AllowAnyOrigin()
+                        builder
+                                .AllowAnyOrigin()
                                 .AllowAnyMethod()
                                 .AllowAnyHeader();
                     });
@@ -107,9 +108,12 @@ namespace Edux
             // Usando a autentica��o
             app.UseAuthentication();
 
-            app.UseCors("CorsPolicy");
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
+
+            app.UseStaticFiles();
+
 
             // Habilitando o uso do SWAGGER na aplica��o
             app.UseSwagger();

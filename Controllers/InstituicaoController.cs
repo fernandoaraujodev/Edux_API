@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Edux.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    //[Authorize(Roles = "Administrador")]
     [Route("api/[controller]")]
     [ApiController]
     public class InstituicaoController : ControllerBase

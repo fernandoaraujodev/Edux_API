@@ -1,6 +1,7 @@
 ﻿using Edux.Contexts;
 using Edux.Domains;
 using Edux.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,9 @@ namespace Edux.Repositories
         {
             try
             {
-                return _ctx.ProfessorTurma.ToList();
+                return _ctx.ProfessorTurma
+                    .Include(x => x.IdTurmaNavigation)
+                    .ToList();
             }
             catch (Exception ex)
             {

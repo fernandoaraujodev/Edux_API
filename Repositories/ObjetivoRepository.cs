@@ -1,9 +1,11 @@
 ﻿using Edux.Contexts;
 using Edux.Domains;
 using Edux.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Edux.Repositories
@@ -23,7 +25,7 @@ namespace Edux.Repositories
             {
                 try
                 {
-                    return _ctx.Objetivo.Find(id);
+                    return _ctx.Objetivo.FirstOrDefault(x => x.IdObjetivo == id); ;
                 }
                 catch (Exception ex)
                 {
@@ -35,8 +37,11 @@ namespace Edux.Repositories
             {
                 try
                 {
-                    return _ctx.Objetivo.ToList();
-                }
+                return _ctx.Objetivo
+                                    .Include(c => c.AlunoObjetivo)
+                                    .Include(y => y.IdCategoriaNavigation)
+                                    .ToList();
+            }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
@@ -74,11 +79,12 @@ namespace Edux.Repositories
                     //Se ela não existir é informado que o usuário não foi encontrado
                     if (objTemp == null)
                     {
-                        throw new Exception("Usuário não encontrado");
+                        throw new Exception("Objetivo não encontrado");
                     }
                     else
                     {
                         //Caso contrário salva todas as alterações no objeto usuarioTemp
+                        objTemp.IdCategoria = obj.IdCategoria;
                         objTemp.Descricao = obj.Descricao;
 
                         //Atualiza com o id informado
@@ -98,22 +104,12 @@ namespace Edux.Repositories
             {
                 try
                 {
-                //Usa o método BuscarPorId para verificar a existência da instituição informada
-                Objetivo objTemp = BuscarPorId(id);
+                    Objetivo objTemp = BuscarPorId(id);
 
-                    //Se ela não existir é informado que a instituição não foi encontrada
-                    if (objTemp == null)
-                    {
-                        throw new Exception("Objetivo não encontrado");
-                    }
-                    else
-                    {
-                        //Remove a instituição informada do contexto
-                        _ctx.Objetivo.Remove(objTemp);
-
-                        //Salva todas as alterações
-                        _ctx.SaveChanges();
-                    }
+                    //Remove a dica do dbSet
+                    _ctx.Objetivo.Remove(objTemp);
+                    //Salva as alteráções do contexto
+                    _ctx.SaveChanges();
                 }
                 catch (Exception ex)
                 {
