@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200924185804_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200924185804_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20201217165354_Ranking.cs" />
+    <Compile Remove="Migrations\20201217165354_Ranking.Designer.cs" />
+    <Compile Remove="Migrations\20201218021330_Ranking.cs" />
+    <Compile Remove="Migrations\20201218021330_Ranking.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Edux.Migrations
 {
     [DbContext(typeof(EduxContext))]
-    [Migration("20200924185804_InitialCreate")]
+    [Migration("20201218061122_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

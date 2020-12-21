@@ -29,6 +29,7 @@ namespace Edux.Contexts
         public virtual DbSet<Turma> Turma { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

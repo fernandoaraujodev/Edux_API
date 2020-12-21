@@ -105,6 +105,8 @@ namespace Edux
 
             app.UseRouting();
 
+
+            
             // Usando a autentica��o
             app.UseAuthentication();
 
